@@ -1,0 +1,32 @@
+# Virtual Environment
+venv/
+.env
+
+# Python Cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# VS Code
+.vscode/
+
+# Streamlit
+.streamlit/secrets.toml
+
+# Data Files
+data/videos/*
+data/audio/*
+data/transcripts/*
+
+# Keep folders but ignore contents
+!data/videos/.gitkeep
+!data/audio/.gitkeep
+!data/transcripts/.gitkeep
+
+# Logs
+*.log
+
+# OS Files
+.DS_Store
+Thumbs.db
