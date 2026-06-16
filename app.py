@@ -4,6 +4,15 @@ import os
 from modules.audio_extractor import extract_audio
 from modules.transcriber import transcribe_audio
 from modules.translator import translate_text
+from modules.summarizer import generate_summary
+
+# --------------------------------------------------
+# Create Required Folders
+# --------------------------------------------------
+os.makedirs("data/videos", exist_ok=True)
+os.makedirs("data/audio", exist_ok=True)
+os.makedirs("data/transcripts", exist_ok=True)
+os.makedirs("data/summaries", exist_ok=True)
 
 # --------------------------------------------------
 # Streamlit Page Configuration
@@ -15,7 +24,6 @@ st.write("AI-Powered Video Learning Assistant")
 
 # --------------------------------------------------
 # Language Mapping
-# Display name -> Language Code
 # --------------------------------------------------
 languages = {
     "English": "en",
@@ -47,7 +55,7 @@ if uploaded_file:
 
     st.success("✅ Video uploaded successfully!")
 
-    # Display uploaded video
+    # Display video
     st.video(uploaded_file)
 
     # Language Selection
@@ -58,7 +66,7 @@ if uploaded_file:
 
     if st.button("Generate Transcript"):
 
-        # Audio output path
+        # Audio file path
         audio_path = os.path.join(
             "data/audio",
             "audio.wav"
@@ -84,7 +92,7 @@ if uploaded_file:
             height=300
         )
 
-        # Save transcript
+        # Save Transcript
         with open(
             "data/transcripts/transcript.txt",
             "w",
@@ -96,7 +104,6 @@ if uploaded_file:
         # Step 3: Translate Transcript
         # ------------------------------------------
         with st.spinner("🌍 Translating transcript..."):
-
             translated_text = translate_text(
                 transcript,
                 languages[selected_language]
@@ -112,7 +119,7 @@ if uploaded_file:
             height=300
         )
 
-        # Save translated transcript
+        # Save Translation
         with open(
             "data/transcripts/translated.txt",
             "w",
@@ -120,4 +127,35 @@ if uploaded_file:
         ) as f:
             f.write(translated_text)
 
-        st.success("✅ Translation completed!")
+        # ------------------------------------------
+        # Step 4: Generate AI Summary
+        # ------------------------------------------
+        with st.spinner("🧠 Generating summary..."):
+
+            # Limit transcript size for now
+            summary = generate_summary(
+                transcript[:5000]
+            )
+
+        st.subheader("📝 Video Summary")
+
+        st.text_area(
+            "Summary",
+            summary,
+            height=250
+        )
+
+        # Save Summary
+        with open(
+            "data/summaries/summary.txt",
+            "w",
+            encoding="utf-8"
+        ) as f:
+            f.write(summary)
+
+        # ------------------------------------------
+        # Completed
+        # ------------------------------------------
+        st.success(
+            "✅ Transcript, Translation, and Summary generated successfully!"
+        )
