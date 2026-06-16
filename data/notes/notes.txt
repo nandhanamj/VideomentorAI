@@ -1,0 +1,40 @@
+# Classification Metrics
+
+## Definitions
+
+*   **Precision:** Measures how trustworthy the positive predictions are – focuses on minimizing false positives.
+*   **Recall:** Measures how much of the actual positive cases the model captures – focuses on minimizing false negatives.
+*   **F1 Score:** A harmonic mean of precision and recall, providing a balanced measure when there's an imbalance in the data. 
+*   **Per Class Accuracy:**  Accuracy calculated for individual classes within a multi-label classification problem. It reveals if specific categories are being consistently ignored or misclassified.
+*   **ROC Curve:** A graphical representation of the performance of a binary classifier across various threshold settings, showing the trade-off between true positive rate and false positive rate.
+*   **AUC (Area Under the Curve):** The area under the ROC curve, used to assess the overall effectiveness of the classifier.
+
+## Key Concepts
+
+*   **Multi-Level Classifications:**  The context of this discussion is dealing with situations where an item can belong to multiple categories simultaneously (multi-label classification).
+*   **Thresholds:** The sigmoid activation function outputs a probability score, and setting a threshold determines which predictions are classified as "yes" (positive) or "no" (negative). Adjusting the threshold directly impacts precision and recall. 
+*   **Trade-off between Precision & Recall**: Lowering the threshold increases recall but decreases precision, while raising the threshold does the opposite.  The ROC curve visually represents this trade-off.
+
+## Important Points
+
+*   **Precision Formula:** True Positives / (True Positives + False Positives)
+*   **Recall Formula:** True Positives / (True Positives + False Negatives)
+*   **F1 Score Formula:** 2 * (Precision * Recall) / (Precision + Recall) – Used to balance precision and recall, particularly when one metric is heavily weighted. 
+*   **Per Class Accuracy**:  True Positives + True Negatives / Total Samples within that specific class.
+*   **ROC Curve Interpretation:** The ROC curve plots the true positive rate (recall) against the false positive rate at various threshold settings. A curve closer to the top-left corner of the graph indicates better performance.
+
+## Examples (if available)
+
+*   **Guitar Detection:**  Imagine a system designed to identify guitars in audio recordings.
+    *   High Precision: The system correctly identifies when a guitar *is* present, minimizing false alarms (saying “guitar” when there isn’t one). 
+    *   Low Recall: The system misses many actual guitar sounds – failing to detect the presence of a guitar when it's there.
+
+## Quick Revision Notes
+
+*   **Precision:**  “Are my positive predictions correct?”
+*   **Recall:** “Am I catching all the positive instances?”
+*   **F1 Score:** “A balanced measure combining precision and recall.”
+*   **Per Class Accuracy:** "How well does the model perform on individual classes?"
+*   **ROC Curve & AUC:** "Visual representation of classifier performance & overall measurement of its effectiveness." 
+
+Do you want me to elaborate on a specific aspect of these metrics, such as calculating F1 score or interpreting an ROC curve?

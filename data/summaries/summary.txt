@@ -1,13 +1,15 @@
 Here’s a summary of the video transcript, broken down into key concepts for students:
 
-*   **Setting Up Stringlet:** The first task is to set up the Stringlet environment – your development space.
-*   **First App Basics:** You'll create a simple web app with a title/description and a sidebar. 
-*   **Sidebar Layout:**  You’ll learn how to build a sidebar with columns and add text content within them.
-*   **Basic Practice:** This is a chance to practice using Stringlet for basic web development.
-*   **User Input for Settings:** It's important to allow users to choose between different analysis methods (like thresholds and aggregation) within the app. 
-*   **Hyperparameter Control:** Users should have control over adjusting model settings (hyperparameters).
-*   **Group Work Next Week:**  Next week, you’ll be working in groups.
-*   **PPT Presentation & Demo:** The group project will culminate in a presentation and demo of your finished project. 
-*   **Final Demo Deadline:** You need to deliver your final project demo by next Friday. 
+*   **Precision:** Measures how trustworthy your “yes” predictions are. It answers: "Of all the times the model said ‘guitar,’ how often was it actually correct?" (True Positives / (True Positives + False Positives))
+*   **Recall:** Measures how well the model catches *all* the real guitars. It asks: “Out of all the actual guitar instances, how many did the model identify?” (True Positives / (True Positives + False Negatives))
+*   **F1-Score:** A balanced metric that combines precision and recall into one score, helping to avoid bias towards either measure.
+*   **Per Class Accuracy:** Shows the accuracy of your model for *each* individual class (e.g., guitar). This helps you see if certain categories are being consistently missed or ignored.
+*   **Accuracy:** The overall percentage of correct predictions out of all instances – this isn't useful when dealing with multiple classes.
+*   **ROC Curve:** A graph that shows the trade-off between true positive rate (recall) and false positive rate at various threshold settings.
+*   **Thresholds:** Adjusting these determines the sensitivity and specificity of your model.
+*   **False Positives:** Incorrectly identifying something as a guitar when it isn't.
+*   **False Negatives:** Failing to identify a real guitar.
+*   **AUC (Area Under Curve):** A single number that summarizes how well your ROC curve performs - higher is better! Approaching 1.0 indicates a perfect classifier.
+*   **ROC (Receiver Operating Characteristic):**  The full name of AUC, representing the relationship between true positive rate and false positive rate.
 
-Do you want me to elaborate on any of these points, or perhaps focus on a specific aspect?
+Do you want me to elaborate on any specific concept or answer further questions about the transcript?

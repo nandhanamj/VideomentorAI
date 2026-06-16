@@ -1,6 +1,6 @@
 import streamlit as st
 import os
-
+from modules.notes_generator import generate_notes
 from modules.audio_extractor import extract_audio
 from modules.transcriber import transcribe_audio
 from modules.translator import translate_text
@@ -144,7 +144,11 @@ if uploaded_file:
             summary,
             height=250
         )
-
+        #Generating study notes
+        with st.spinner("📚 Generating study notes..."):
+            notes = generate_notes(
+                transcript[:5000]
+        )
         # Save Summary
         with open(
             "data/summaries/summary.txt",
@@ -152,7 +156,20 @@ if uploaded_file:
             encoding="utf-8"
         ) as f:
             f.write(summary)
-
+        #Display study notes    
+        st.subheader("📚 Study Notes")
+        st.text_area(
+            "Notes",
+            notes,
+            height=400
+        )
+        #Save study notes
+        with open(
+            "data/notes/notes.txt",
+            "w",
+            encoding="utf-8"
+        ) as f:
+            f.write(notes)
         # ------------------------------------------
         # Completed
         # ------------------------------------------
