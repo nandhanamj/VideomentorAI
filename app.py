@@ -1,10 +1,11 @@
 import streamlit as st
 import os
-from modules.notes_generator import generate_notes
+
 from modules.audio_extractor import extract_audio
 from modules.transcriber import transcribe_audio
 from modules.translator import translate_text
 from modules.summarizer import generate_summary
+from modules.notes_generator import generate_notes
 from modules.quiz_generator import generate_quiz
 
 # --------------------------------------------------
@@ -14,6 +15,7 @@ os.makedirs("data/videos", exist_ok=True)
 os.makedirs("data/audio", exist_ok=True)
 os.makedirs("data/transcripts", exist_ok=True)
 os.makedirs("data/summaries", exist_ok=True)
+os.makedirs("data/notes", exist_ok=True)
 os.makedirs("data/quizzes", exist_ok=True)
 
 # --------------------------------------------------
@@ -57,7 +59,7 @@ if uploaded_file:
 
     st.success("✅ Video uploaded successfully!")
 
-    # Display video
+    # Display uploaded video
     st.video(uploaded_file)
 
     # Language Selection
@@ -68,7 +70,7 @@ if uploaded_file:
 
     if st.button("Generate Transcript"):
 
-        # Audio file path
+        # Audio output path
         audio_path = os.path.join(
             "data/audio",
             "audio.wav"
@@ -133,8 +135,6 @@ if uploaded_file:
         # Step 4: Generate AI Summary
         # ------------------------------------------
         with st.spinner("🧠 Generating summary..."):
-
-            # Limit transcript size for now
             summary = generate_summary(
                 transcript[:5000]
             )
@@ -146,16 +146,7 @@ if uploaded_file:
             summary,
             height=250
         )
-        #Generating study notes
-        with st.spinner("📚 Generating study notes..."):
-            notes = generate_notes(
-                transcript[:5000]
-        )
-        #Generating quizzes
-        with st.spinner("🎯 Generating quiz..."):
-            quiz = generate_quiz(
-                transcript[:5000]
-            )    
+
         # Save Summary
         with open(
             "data/summaries/summary.txt",
@@ -163,37 +154,54 @@ if uploaded_file:
             encoding="utf-8"
         ) as f:
             f.write(summary)
-        #Display study notes    
+
+        # ------------------------------------------
+        # Step 5: Generate Study Notes
+        # ------------------------------------------
+        with st.spinner("📚 Generating study notes..."):
+            notes = generate_notes(summary)
+
         st.subheader("📚 Study Notes")
+
         st.text_area(
             "Notes",
             notes,
             height=400
         )
-        #Display quiz
-        st.subheader("🎯 Practice Quiz")
-        st.text_area(
-            "Quiz",
-            quiz,
-            height=500
-        )
-        #Save study notes
+
+        # Save Notes
         with open(
             "data/notes/notes.txt",
             "w",
             encoding="utf-8"
         ) as f:
             f.write(notes)
-        #save quiz
+
+        # ------------------------------------------
+        # Step 6: Generate Quiz
+        # ------------------------------------------
+        with st.spinner("🎯 Generating quiz..."):
+            quiz = generate_quiz(summary)
+
+        st.subheader("🎯 Practice Quiz")
+
+        st.text_area(
+            "Quiz",
+            quiz,
+            height=500
+        )
+
+        # Save Quiz
         with open(
             "data/quizzes/quiz.txt",
             "w",
             encoding="utf-8"
         ) as f:
-            f.write(quiz)    
+            f.write(quiz)
+
         # ------------------------------------------
         # Completed
         # ------------------------------------------
         st.success(
-            "✅ Transcript, Translation, and Summary generated successfully!"
+            "✅ Transcript, Translation, Summary, Notes, and Quiz generated successfully!"
         )

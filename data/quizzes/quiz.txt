@@ -1,140 +1,126 @@
-Okay, here are 10 multiple-choice questions based on the provided transcript, with answers clearly indicated.
+Okay, here are 10 multiple-choice questions based on the provided transcript, along with their correct answers:
 
 **Question 1:**
 
-What is the primary difference between Single Label Learning and Multi-Label Learning as described in the text?
+What is the primary goal of building an audio processing pipeline?
 
-a) Single Label Learning always produces higher accuracy than Multi-Label Learning.
-b) **Multi-Label Learning learns multiple independent decisions simultaneously for each class, while Single Label Learning focuses on one correct class.**
-c) Single Label Learning is faster to train than Multi-Label Learning.
-d) Both models use the same loss function and evaluation metrics.
+a)  Creating musical compositions from raw audio.
+b)  Building an audio processing pipeline. 
+c)  Processing and analyzing audio recordings into a structured format.
+d)  Converting wave files to MP3s.
 
-**Answer: b)**
+**Correct Answer:** c) Processing and analyzing audio recordings into a structured format.
 
----
 
 **Question 2:**
 
-In Multi-Label Learning, how does the model approach each input data point?
+What is the initial input for the audio processing pipeline?
 
-a) It solves a single binary problem asking only whether an instrument is present or not.
-b) **It tackles ‘n’ binary problems simultaneously, where ‘n’ represents the number of potential labels.**
-c)  It uses complex decision trees that rapidly converge to the correct label.
-d) It ignores rare classes during training to improve accuracy.
+a) A JSON file containing processed data.
+b) A segmented audio file.
+c)  The original wave file of an audio recording.
+d)  A prediction output from the aggregation stage.
 
-**Answer: b)** 
+**Correct Answer:** c) The original wave file of an audio recording.
 
----
 
 **Question 3:**
 
-Why does the total loss in Multi-Label Learning often remain non-zero even when a model correctly predicts one instrument?
+What is the intended final output format for this project?
 
-a) The model is intentionally designed to be inaccurate in some cases.
-b) It’s a consequence of using only cross entropy loss.
-c) **The model might still incorrectly predict other instruments, leading to a non-zero contribution to the total loss.**
-d) This behavior indicates that the model has not been trained sufficiently.
+a) An MP3 audio file.
+b) A raw wave file with cleaned data.
+c)  A structured JSON file containing processed information.
+d)  An Excel spreadsheet of extracted features.
 
-**Answer: c)** 
+**Correct Answer:** c) A structured JSON file containing processed information.
 
-
----
 
 **Question 4:**
 
-What is a key reason why achieving low loss values in Binary Cross Entropy (BCE) can be more challenging in Multi-Label Learning compared to Cross Entropy?
+Why is a modular design recommended for this project?
 
-a) The complexity of the multi-label model always makes it impossible for BCE to reach low values.
-b) **The multiple classes and associated losses contribute significantly, making a universally low value difficult to achieve.**
-c)  BCE is inherently designed with more noise than cross entropy. 
-d)  It is never possible to achieve low loss in multi-label training.
+a) To create complex audio effects.
+b)  To allow each part (function) to be tested independently.
+c)  To minimize the amount of data processed.
+d)  To automatically generate JSON output.
 
-**Answer: b)**
+**Correct Answer:** b) To allow each part (function) to be tested independently.
 
-
----
 
 **Question 5:**
 
-According to the transcript, what does the term "misleading" accuracy refer to in the context of Multi-Label Training?
+Which step comes *first* in the audio processing pipeline?
 
-a) It means that models trained with Multi-Label Learning always have lower accuracy than Single Label models
-b) **It suggests that apparent high accuracy during training might be due to the model predicting “no instrument” for rare classes.**
-c)  Misleading accuracy refers specifically to issues in evaluating loss values.
-d)  The term is never used in this context
+a) Segmentation
+b) Feature Extraction
+c) Loading Audio
+d) Prediction & Aggregation
 
-**Answer: b)**
+**Correct Answer:** c) Loading Audio
 
 
----
 
 **Question 6:**
 
-What does the transcript suggest about the relationship between gradients during Multi-Label Training?
+What is "Pre-processing" in this context referring to?
 
-a) Gradients are concentrated only on dominant classes, leading to fast learning.
-b) **Gradients are spread across many classes due to a wide variety of labels.**
-c)  The gradient information is not used effectively in multi-label training. 
-d)  Gradient computation is never performed during the training process
+a)  Generating predictions about the audio.
+b)  Dividing the audio into smaller segments.
+c) Preparing the audio for analysis - cleaning it up.
+d) Creating a JSON file with thresholds.
 
-**Answer: b)**
+**Correct Answer:** c) Preparing the audio for analysis – cleaning it up.
 
-
----
 
 **Question 7:**
 
-Why does Multi-Label Training often feel different compared to Single Label Learning?
+What is the purpose of “Segmentation” in the pipeline?
 
-a) The architecture of multi-label models is inherently more complex and slower.
-b) **It is primarily due to higher loss values, misleading accuracy metrics, and slower learning rates.**
-c) Multi-label training never needs a training loop 
-d) The model’s weights are always randomly initialized.
+a)  To identify musical notes within the audio.
+b)  Dividing the audio into smaller segments.
+c)  To apply thresholds to the predictions.
+d)  To create the JSON output file.
 
-**Answer: b)**
+**Correct Answer:** b) Dividing the audio into smaller segments.
 
-
----
 
 **Question 8:**
 
-What does the transcript describe multi-label models as being like compared to single label models?
+"Feature Extraction" involves:
 
-a) Lazy and unproductive.
-b) Faster learning because of simpler architectures.
-c) **More cautious, taking a deliberate approach to training.**
-d) Less reliable in predicting instrument presence.
+a) Converting the audio into MIDI format.
+b)  Identifying key characteristics (features) within each segment.
+c) Applying thresholds to predictions.
+d)  Creating a JSON output file.
 
-**Answer: c)**
+**Correct Answer:** b) Identifying key characteristics (features) within each segment.
 
-
----
 
 **Question 9:**
 
-What is the main reason loss values might appear higher during multi-label training compared to binary cross entropy?
+“Prediction & Aggregation” refers to:
 
-a) It's simply a bug in the implementation of the Multi-Label Loss function.
-b) The model always incorporates negative data into its loss calculations, increasing it.
-c) **Because each class contributes a separate loss value based on predictions.**
-d) Loss values are not correlated with the accuracy during training
+a) Creating visual representations of the audio data.
+b) Predicting what’s happening in segments and combining those predictions.
+c)  Cleaning up the raw audio file.
+d) Generating an MP3 file from the processed data.
 
-**Answer: c)** 
+**Correct Answer:** b) Predicting what’s happening in segments and combining those predictions.
 
-
----
 
 **Question 10:**
 
-How can you best interpret the results of Multi-Label Training regarding model performance?
+What is the role of “Thresholding” in the final stage?
 
-a)  Rely exclusively on Accuracy scores to assess the model's effectiveness.
-b) Focus primarily on comparing cross entropy loss values directly with binary cross entropy.
-c) **Trust the Loss value more than accuracy, as it provides a more honest reflection of the model’s training progress.**
-d) Ignore the total loss and only consider individual class loss values
+a)  Extracting features from the audio segments.
+b) Applying limits to the predictions.
+c)  Generating a JSON output file.
+d)  Loading the original wave file.
 
-**Answer: c)** 
+**Correct Answer:** b) Applying limits to the predictions. 
+
 
 ---
 
-Would you like me to generate any variations of these questions or focus on specific aspects of the transcript?
+Do you want me to adjust anything about these questions (e.g., difficulty, specific concepts emphasized)?
