@@ -1,0 +1,140 @@
+Okay, here are 10 multiple-choice questions based on the provided transcript, with answers clearly indicated.
+
+**Question 1:**
+
+What is the primary difference between Single Label Learning and Multi-Label Learning as described in the text?
+
+a) Single Label Learning always produces higher accuracy than Multi-Label Learning.
+b) **Multi-Label Learning learns multiple independent decisions simultaneously for each class, while Single Label Learning focuses on one correct class.**
+c) Single Label Learning is faster to train than Multi-Label Learning.
+d) Both models use the same loss function and evaluation metrics.
+
+**Answer: b)**
+
+---
+
+**Question 2:**
+
+In Multi-Label Learning, how does the model approach each input data point?
+
+a) It solves a single binary problem asking only whether an instrument is present or not.
+b) **It tackles ‘n’ binary problems simultaneously, where ‘n’ represents the number of potential labels.**
+c)  It uses complex decision trees that rapidly converge to the correct label.
+d) It ignores rare classes during training to improve accuracy.
+
+**Answer: b)** 
+
+---
+
+**Question 3:**
+
+Why does the total loss in Multi-Label Learning often remain non-zero even when a model correctly predicts one instrument?
+
+a) The model is intentionally designed to be inaccurate in some cases.
+b) It’s a consequence of using only cross entropy loss.
+c) **The model might still incorrectly predict other instruments, leading to a non-zero contribution to the total loss.**
+d) This behavior indicates that the model has not been trained sufficiently.
+
+**Answer: c)** 
+
+
+---
+
+**Question 4:**
+
+What is a key reason why achieving low loss values in Binary Cross Entropy (BCE) can be more challenging in Multi-Label Learning compared to Cross Entropy?
+
+a) The complexity of the multi-label model always makes it impossible for BCE to reach low values.
+b) **The multiple classes and associated losses contribute significantly, making a universally low value difficult to achieve.**
+c)  BCE is inherently designed with more noise than cross entropy. 
+d)  It is never possible to achieve low loss in multi-label training.
+
+**Answer: b)**
+
+
+---
+
+**Question 5:**
+
+According to the transcript, what does the term "misleading" accuracy refer to in the context of Multi-Label Training?
+
+a) It means that models trained with Multi-Label Learning always have lower accuracy than Single Label models
+b) **It suggests that apparent high accuracy during training might be due to the model predicting “no instrument” for rare classes.**
+c)  Misleading accuracy refers specifically to issues in evaluating loss values.
+d)  The term is never used in this context
+
+**Answer: b)**
+
+
+---
+
+**Question 6:**
+
+What does the transcript suggest about the relationship between gradients during Multi-Label Training?
+
+a) Gradients are concentrated only on dominant classes, leading to fast learning.
+b) **Gradients are spread across many classes due to a wide variety of labels.**
+c)  The gradient information is not used effectively in multi-label training. 
+d)  Gradient computation is never performed during the training process
+
+**Answer: b)**
+
+
+---
+
+**Question 7:**
+
+Why does Multi-Label Training often feel different compared to Single Label Learning?
+
+a) The architecture of multi-label models is inherently more complex and slower.
+b) **It is primarily due to higher loss values, misleading accuracy metrics, and slower learning rates.**
+c) Multi-label training never needs a training loop 
+d) The model’s weights are always randomly initialized.
+
+**Answer: b)**
+
+
+---
+
+**Question 8:**
+
+What does the transcript describe multi-label models as being like compared to single label models?
+
+a) Lazy and unproductive.
+b) Faster learning because of simpler architectures.
+c) **More cautious, taking a deliberate approach to training.**
+d) Less reliable in predicting instrument presence.
+
+**Answer: c)**
+
+
+---
+
+**Question 9:**
+
+What is the main reason loss values might appear higher during multi-label training compared to binary cross entropy?
+
+a) It's simply a bug in the implementation of the Multi-Label Loss function.
+b) The model always incorporates negative data into its loss calculations, increasing it.
+c) **Because each class contributes a separate loss value based on predictions.**
+d) Loss values are not correlated with the accuracy during training
+
+**Answer: c)** 
+
+
+---
+
+**Question 10:**
+
+How can you best interpret the results of Multi-Label Training regarding model performance?
+
+a)  Rely exclusively on Accuracy scores to assess the model's effectiveness.
+b) Focus primarily on comparing cross entropy loss values directly with binary cross entropy.
+c) **Trust the Loss value more than accuracy, as it provides a more honest reflection of the model’s training progress.**
+d) Ignore the total loss and only consider individual class loss values
+
+**Answer: c)** 
+
+---
+
+Would you like me to generate any variations of these questions or focus on specific aspects of the transcript?

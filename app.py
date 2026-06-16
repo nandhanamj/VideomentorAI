@@ -5,6 +5,7 @@ from modules.audio_extractor import extract_audio
 from modules.transcriber import transcribe_audio
 from modules.translator import translate_text
 from modules.summarizer import generate_summary
+from modules.quiz_generator import generate_quiz
 
 # --------------------------------------------------
 # Create Required Folders
@@ -13,6 +14,7 @@ os.makedirs("data/videos", exist_ok=True)
 os.makedirs("data/audio", exist_ok=True)
 os.makedirs("data/transcripts", exist_ok=True)
 os.makedirs("data/summaries", exist_ok=True)
+os.makedirs("data/quizzes", exist_ok=True)
 
 # --------------------------------------------------
 # Streamlit Page Configuration
@@ -149,6 +151,11 @@ if uploaded_file:
             notes = generate_notes(
                 transcript[:5000]
         )
+        #Generating quizzes
+        with st.spinner("🎯 Generating quiz..."):
+            quiz = generate_quiz(
+                transcript[:5000]
+            )    
         # Save Summary
         with open(
             "data/summaries/summary.txt",
@@ -163,6 +170,13 @@ if uploaded_file:
             notes,
             height=400
         )
+        #Display quiz
+        st.subheader("🎯 Practice Quiz")
+        st.text_area(
+            "Quiz",
+            quiz,
+            height=500
+        )
         #Save study notes
         with open(
             "data/notes/notes.txt",
@@ -170,6 +184,13 @@ if uploaded_file:
             encoding="utf-8"
         ) as f:
             f.write(notes)
+        #save quiz
+        with open(
+            "data/quizzes/quiz.txt",
+            "w",
+            encoding="utf-8"
+        ) as f:
+            f.write(quiz)    
         # ------------------------------------------
         # Completed
         # ------------------------------------------
